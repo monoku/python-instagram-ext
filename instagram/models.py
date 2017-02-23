@@ -87,7 +87,8 @@ class Media(ApiModel):
                 for version, version_info in six.iteritems(entry['videos']):
                     new_media.videos[version] = Video.object_from_dictionary(version_info)
             except KeyError:
-                print(entry)
+                # Currently the instagram api don't return the "videos" key.
+                pass
 
         if 'user_has_liked' in entry:
             new_media.user_has_liked = entry['user_has_liked']
